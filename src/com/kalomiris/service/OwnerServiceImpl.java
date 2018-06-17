@@ -1,7 +1,7 @@
 package com.kalomiris.service;
 
 import com.kalomiris.dao.DaoOwnerImpl;
-import com.kalomiris.dao.DaoParkpositionImpl;
+import com.kalomiris.dao.DaoParkPositionImpl;
 import com.kalomiris.model.Car;
 import com.kalomiris.model.Moto;
 import com.kalomiris.model.Owner;
@@ -11,7 +11,7 @@ public class OwnerServiceImpl implements OwnerService {
 
     private static ParkPositionServiceImpl parkPositionServiceImpl = new ParkPositionServiceImpl();
     private DaoOwnerImpl daoOwnerImpl = new DaoOwnerImpl();
-    private DaoParkpositionImpl daoParkpositionImpl = new DaoParkpositionImpl();
+    private DaoParkPositionImpl daoParkPositionImpl = new DaoParkPositionImpl();
     /**
      * Create owner (if does not exist)
      */
@@ -79,7 +79,7 @@ public class OwnerServiceImpl implements OwnerService {
      * Finally return the cost per POSITION(Vehicle) in Owner
      */
     public double calculateChargePerVehicle(Owner owner, Vehicle vehicle) {
-        double duration = parkPositionServiceImpl.computeDuration(daoParkpositionImpl.retrieveTime(vehicle.getNumberPlate())) / 60000;
+        double duration = parkPositionServiceImpl.computeDuration(daoParkPositionImpl.retrieveTime(vehicle.getNumberPlate())) / 60000;
         if (duration < 30) {
             if (counterVehicle(owner.getOwnerId()) >= 2) {      //Counter for number of vehicle per owner.
                 if (vehicle instanceof Car) {

@@ -1,7 +1,7 @@
 package com.kalomiris.service;
 
 import com.kalomiris.dao.DaoEmployeeImpl;
-import com.kalomiris.dao.DaoParkpositionImpl;
+import com.kalomiris.dao.DaoParkPositionImpl;
 import com.kalomiris.model.Employee;
 import com.kalomiris.model.Vehicle;
 import com.kalomiris.util.ComputeDate;
@@ -9,14 +9,14 @@ import com.kalomiris.model.ParkPosition;
 
 public class ParkPositionServiceImpl implements ParkPositionService{
 
-    private DaoParkpositionImpl daoParkpositionImpl = new DaoParkpositionImpl();
+    private DaoParkPositionImpl daoParkPositionImpl = new DaoParkPositionImpl();
     private DaoEmployeeImpl daoEmployeeImpl = new DaoEmployeeImpl();
 
     /**
      * Insert vehicle, and employee in park position
      */
     public void createParkPosition(Vehicle vehicle){
-        int emptyPosition = daoParkpositionImpl.EmptyPosition();
+        int emptyPosition = daoParkPositionImpl.EmptyPosition();
         Employee employee;
         if (ComputeDate.timeForShift(12)) {
             employee = daoEmployeeImpl.retrieveRecord("ak123");
@@ -24,15 +24,15 @@ public class ParkPositionServiceImpl implements ParkPositionService{
             employee = daoEmployeeImpl.retrieveRecord("ak345");
         }
         ParkPosition parkPosition = new ParkPosition(vehicle,employee);
-        daoParkpositionImpl.insertRecord(parkPosition,emptyPosition);
+        daoParkPositionImpl.insertRecord(parkPosition,emptyPosition);
     }
 
     public void deletePosition(String numberPlate){
-        daoParkpositionImpl.deleteRecord(numberPlate);
+        daoParkPositionImpl.deleteRecord(numberPlate);
     }
 
     public void  showDetails(String numberPlate){
-        System.out.println(daoParkpositionImpl.retrieveAllDetails(numberPlate));
+        System.out.println(daoParkPositionImpl.retrieveAllDetails(numberPlate));
     }
 
     public long computeDuration(long time){
@@ -41,12 +41,12 @@ public class ParkPositionServiceImpl implements ParkPositionService{
     }
 
     public boolean isFull(int i){
-        return (daoParkpositionImpl.counterPosition() == i) ? true : false;
+        return (daoParkPositionImpl.counterPosition() == i) ? true : false;
     }
 
 
     public void printPositionMap(int i){
-        int counter = daoParkpositionImpl.counterPosition();
+        int counter = daoParkPositionImpl.counterPosition();
         System.out.println("\n\nThe free position is: " + (i - counter));
         System.out.println("\nMap of parking station:\n");
         System.out.print("=========================================\n");

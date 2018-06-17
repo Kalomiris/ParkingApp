@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Locale;
 import java.util.TimeZone;
 
-public class DaoParkpositionImpl implements DaoParkPosition{
+public class DaoParkPositionImpl implements DaoParkPosition{
     private ConnectionToDBImpl connectionToDBImpl = new ConnectionToDBImpl();
 
     public ParkPosition insertRecord(ParkPosition parkPosition,int emptyPosition) {
