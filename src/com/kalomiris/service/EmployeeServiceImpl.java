@@ -1,4 +1,4 @@
 package com.kalomiris.service;
 
-public class EmployeeServiceImpl {
+public class EmployeeServiceImpl implements EmployeeService{
 }
