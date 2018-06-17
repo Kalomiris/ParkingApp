@@ -7,9 +7,9 @@ import java.sql.SQLException;
 
 public class ConnectionToDBImpl implements ConnectionToDB{
 
-    private final String url = "jdbc:postgresql://localhost:5432/mydb";
-    private final String user = "postgres";
-    private final String password = "post";
+    private final String url = "";
+    private final String user = "";
+    private final String password = "";
 
     /**
      * Connect to the PostgreSQL database
